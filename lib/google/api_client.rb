@@ -611,6 +611,7 @@ module Google
               begin
                 logger.debug("Attempting refresh of access token & retry of request")
                 request.authorization.fetch_access_token!
+                result = request.send(connection, true)
               rescue Signet::AuthorizationError
                  # Ignore since we want the original error
               end
